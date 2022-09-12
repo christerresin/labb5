@@ -7,16 +7,17 @@ public class Die extends BoardGameMaterial {
         value = (int) Math.random();
     }
 
-    public int DieRoll() {
-        value = (int)(Math.random()*6+1);
+    public int rollDie() {
+        value = (int) (Math.random() * 6 + 1);
         return value;
     }
 
-    public int DieReroll() {
-        return DieRoll();
+    public int rerollDie() {
+        return rollDie();
     }
 
-    public String getString() {
+    @Override
+    public String toString() {
         return "Dice shows " + value;
     }
 }
