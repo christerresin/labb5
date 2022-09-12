@@ -17,10 +17,11 @@ public class YatziTest {
     @Test
     void isNotYatziWhenOneDieIsNotMatchingTheOther() {
         Die[] dice = new Die[5];
-        for (Die die : dice) {
-            die.value = 6;
+        for (int d = 0; d < 5; d++) {
+            dice[d] = new Die();
         }
-        dice[5].value = 1;
+        dice[4].value = 1;
         // Assert something?
+        assertEquals(false, YatziMain.checkIfYatzi(dice));
     }
 }

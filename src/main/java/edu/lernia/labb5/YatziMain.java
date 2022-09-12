@@ -21,7 +21,7 @@ public class YatziMain {
                 for (int i = 0; i < dice.length; i++) {
                     dice[i].rollDie();
                     // dice[i].value = 5; //Test if yatzi work
-                    System.out.println(i + ": " + dice[i].toString());
+                    System.out.println(i + 1 + ": " + dice[i].toString());
                 }
                 // YATZI
                 boolean isYatzi = checkIfYatzi(dice);
