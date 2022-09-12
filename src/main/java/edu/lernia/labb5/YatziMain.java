@@ -24,7 +24,7 @@ public class YatziMain {
                     System.out.println(i + ": " + dice[i].toString());
                 }
                 // YATZI
-                boolean isYatzi = BoardGameMaterial.checkIfYatzi(dice);
+                boolean isYatzi = checkIfYatzi(dice);
                 if (isYatzi == true) {
                     System.out.println("You got YATZI! in " + dice[0].value + "'s");
                     return;
@@ -53,5 +53,17 @@ public class YatziMain {
                 }
             }
         }
+    }
+
+    public static boolean checkIfYatzi(Die[] dice) {
+        boolean isYatzi = true;
+        for (int j = 1; j < 5; j++) {
+            if (dice[j].value != dice[j - 1].value) {
+                isYatzi = false;
+            }
+
+        }
+        return isYatzi;
+
     }
 }
