@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class YatziMain {
     public static Die[] dice;
-    public static boolean bGameIsOn = true;
+    public static boolean isPlaying = true;
 
     public static void main(String[] args) {
         int gameTurn = 1;
@@ -13,7 +13,7 @@ public class YatziMain {
             dice[d] = new Die();
         }
         // We will continue until the game is over
-        while (bGameIsOn == true) {
+        while (isPlaying == true) {
             gameTurn = 1;
             System.out.println("Welcome to Yatzi!");
             while (gameTurn < 4) {
@@ -42,7 +42,7 @@ public class YatziMain {
                         if (sc.next().equals("y")) {
                             ++gameTurn;
                         } else {
-                            bGameIsOn = !bGameIsOn;
+                            isPlaying = !isPlaying;
                             break;
                         }
                     } else {
@@ -51,7 +51,7 @@ public class YatziMain {
                         if (sc.next().equals("y")) {
                             gameTurn = 1;
                         } else {
-                            bGameIsOn = !bGameIsOn;
+                            isPlaying = !isPlaying;
                             break;
                         }
                     }
