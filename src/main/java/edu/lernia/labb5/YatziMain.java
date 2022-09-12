@@ -9,7 +9,7 @@ public class YatziMain {
     public static void main(String[] args) {
         int gameTurn = 1;
         dice = new Die[5];
-        for (int d = 0; d < 5; d++) {
+        for (int d = 0; d < dice.length; d++) {
             dice[d] = new Die();
         }
         // We will continue until the game is over
@@ -36,16 +36,14 @@ public class YatziMain {
                             if (sc.next().equals("y")) {
                                 ++gameTurn;
                             } else {
-                                isPlaying = !isPlaying;
-                                break;
+                                endGame();
                             }
                         } else {
                             System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
                             if (sc.next().equals("y")) {
                                 gameTurn = 1;
                             } else {
-                                isPlaying = !isPlaying;
-                                break;
+                                endGame();
                             }
                         }
                     }
@@ -68,4 +66,10 @@ public class YatziMain {
         return isYatzi;
 
     }
+
+    public static void endGame() {
+        isPlaying = false;
+        System.exit(0);
+    }
+
 }
