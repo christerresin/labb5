@@ -24,12 +24,7 @@ public class YatziMain {
                     System.out.println(i + ": " + dice[i].toString());
                 }
                 // YATZI
-                boolean isYatzi = true;
-                for (int j = 1; j < 5; j++) {
-                    if (dice[j].value != dice[j - 1].value) {
-                        isYatzi = false;
-                    }
-                }
+                boolean isYatzi = BoardGameMaterial.checkIfYatzi(dice);
                 if (isYatzi == true) {
                     System.out.println("You got YATZI! in " + dice[0].value + "'s");
                     return;
@@ -46,7 +41,7 @@ public class YatziMain {
                             break;
                         }
                     } else {
-                        System.out.println("Game over! Want to play again?");
+                        System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
                         Scanner sc = new Scanner(System.in);
                         if (sc.next().equals("y")) {
                             gameTurn = 1;
