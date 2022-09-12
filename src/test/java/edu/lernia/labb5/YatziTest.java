@@ -21,7 +21,6 @@ public class YatziTest {
             dice[d] = new Die();
         }
         dice[4].value = 1;
-        // Assert something?
         assertEquals(false, YatziMain.checkIfYatzi(dice));
     }
 }
