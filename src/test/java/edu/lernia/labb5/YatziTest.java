@@ -20,7 +20,7 @@ public class YatziTest {
         for (int d = 0; d < 5; d++) {
             dice[d] = new Die();
         }
-        dice[4].value = 1;
+        dice[4].rollDie();
         assertEquals(false, YatziMain.checkIfYatzi(dice));
     }
 }

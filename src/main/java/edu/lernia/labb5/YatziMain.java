@@ -25,7 +25,7 @@ public class YatziMain {
                 }
                 // YATZI
                 if (checkIfYatzi(dice)) {
-                    System.out.println("You got YATZI! in " + dice[0].value + "'s");
+                    System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
                     return;
                 } else {
                     // Here we check if there is no Yatzy: then we check what turn we are on and
@@ -57,7 +57,7 @@ public class YatziMain {
     public static boolean checkIfYatzi(Die[] dice) {
         boolean isYatzi = true;
         for (int j = 1; j < 5; j++) {
-            if (dice[j].value != dice[j - 1].value) {
+            if (dice[j].getValue() != dice[j - 1].getValue()) {
                 isYatzi = false;
             }
 

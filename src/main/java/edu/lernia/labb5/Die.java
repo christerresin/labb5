@@ -1,18 +1,26 @@
 package edu.lernia.labb5;
 
 public class Die extends BoardGameMaterial {
-    public int value = 0;
+    private int value = 0;
 
     public Die() {
     }
 
-    public int rollDie() {
-        value = (int) (Math.random() * 6 + 1);
+    public Die(int value) {
+        setValue(value);
+    }
+
+    public int getValue() {
         return value;
     }
 
-    public int rerollDie() {
-        return rollDie();
+    private void setValue(int value) {
+        this.value = value;
+    }
+
+    public void rollDie() {
+        int dieValue = (int) (Math.random() * 6 + 1);
+        setValue(dieValue);
     }
 
     @Override
