@@ -16,40 +16,43 @@ public class YatziMain {
         while (isPlaying == true) {
             gameTurn = 1;
             System.out.println("Welcome to Yatzi!");
-            while (gameTurn < 4) {
-                System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
-                for (int i = 0; i < dice.length; i++) {
-                    dice[i].rollDie();
-                    // dice[i].value = 5; //Test if yatzi work
-                    System.out.println(i + 1 + ": " + dice[i].toString());
-                }
-                // YATZI
-                if (checkIfYatzi(dice)) {
-                    System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
-                    return;
-                } else {
-                    // Here we check if there is no Yatzy: then we check what turn we are on and
-                    // asks the player if we want to continue or not
-                    if (gameTurn != 3) {
-                        System.out.println("Want to throw again? (y for yes, anything else for no)");
-                        Scanner sc = new Scanner(System.in);
-                        if (sc.next().equals("y")) {
-                            ++gameTurn;
-                        } else {
-                            isPlaying = !isPlaying;
-                            break;
-                        }
+            try (Scanner sc = new Scanner(System.in)) {
+                while (gameTurn < 4) {
+                    System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
+                    for (int i = 0; i < dice.length; i++) {
+                        dice[i].rollDie();
+                        // dice[i].value = 5; //Test if yatzi work
+                        System.out.println(i + 1 + ": " + dice[i].toString());
+                    }
+                    // YATZI
+                    if (checkIfYatzi(dice)) {
+                        System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
+                        return;
                     } else {
-                        System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
-                        Scanner sc = new Scanner(System.in);
-                        if (sc.next().equals("y")) {
-                            gameTurn = 1;
+                        // Here we check if there is no Yatzy: then we check what turn we are on and
+                        // asks the player if we want to continue or not
+                        if (gameTurn != 3) {
+                            System.out.println("Want to throw again? (y for yes, anything else for no)");
+                            if (sc.next().equals("y")) {
+                                ++gameTurn;
+                            } else {
+                                isPlaying = !isPlaying;
+                                break;
+                            }
                         } else {
-                            isPlaying = !isPlaying;
-                            break;
+                            System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
+                            if (sc.next().equals("y")) {
+                                gameTurn = 1;
+                            } else {
+                                isPlaying = !isPlaying;
+                                break;
+                            }
                         }
                     }
                 }
+
+            } catch (Exception e) {
+                System.err.println(e);
             }
         }
     }
