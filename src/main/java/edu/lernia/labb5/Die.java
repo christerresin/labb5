@@ -4,6 +4,7 @@ public class Die extends BoardGameMaterial {
     private int value = 0;
 
     public Die() {
+        this.rollDie();
     }
 
     public Die(int value) {

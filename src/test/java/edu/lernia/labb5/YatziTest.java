@@ -9,9 +9,10 @@ public class YatziTest {
     void isYatziWhenAllDiceMatches() {
         Die[] dice = new Die[5];
         for (int d = 0; d < 5; d++) {
-            dice[d] = new Die();
+            dice[d] = new Die(1);
         }
-        assertEquals(true, YatziMain.checkIfYatzi(dice));
+        BoardGameMaterial yatzi = new BoardGameMaterial();
+        assertEquals(true, yatzi.checkIfYatzi(dice));
     }
 
     @Test
@@ -21,6 +22,7 @@ public class YatziTest {
             dice[d] = new Die();
         }
         dice[4].rollDie();
-        assertEquals(false, YatziMain.checkIfYatzi(dice));
+        BoardGameMaterial yatzi = new BoardGameMaterial();
+        assertEquals(false, yatzi.checkIfYatzi(dice));
     }
 }
