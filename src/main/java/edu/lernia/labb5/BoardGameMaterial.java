@@ -22,7 +22,7 @@ public class BoardGameMaterial {
             System.out.println("Welcome to Yatzi!");
             try (Scanner sc = new Scanner(System.in)) {
                 while (gameTurn < 4) {
-                    startGame();
+                    startNewTurn();
                     // YATZI
                     if (checkIfYatzi(dice)) {
                         System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
@@ -30,19 +30,9 @@ public class BoardGameMaterial {
                         // Here we check if there is no Yatzy: then we check what turn we are on and
                         // asks the player if we want to continue or not
                         if (gameTurn != 3) {
-                            System.out.println("Want to throw again? (y for yes, anything else for no)");
-                            if (sc.next().equals("y")) {
-                                ++gameTurn;
-                            } else {
-                                endGame();
-                            }
+                            rerollDies(sc);
                         } else {
-                            System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
-                            if (sc.next().equals("y")) {
-                                gameTurn = 1;
-                            } else {
-                                endGame();
-                            }
+                            gameOverOrNewGame(sc);
                         }
                     }
                 }
@@ -54,7 +44,25 @@ public class BoardGameMaterial {
 
     }
 
-    private void startGame() {
+    private void rerollDies(Scanner sc) {
+        System.out.println("Want to throw again? (y for yes, anything else for no)");
+        if (sc.next().equals("y")) {
+            ++gameTurn;
+        } else {
+            endGame();
+        }
+    }
+
+    private void gameOverOrNewGame(Scanner sc) {
+        System.out.println("Game over! Want to play again? (y for yes, anything else for no)");
+        if (sc.next().equals("y")) {
+            gameTurn = 1;
+        } else {
+            endGame();
+        }
+    }
+
+    private void startNewTurn() {
         System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
         for (int i = 0; i < dice.length; i++) {
             dice[i].rollDie(6);
