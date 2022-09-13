@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class BoardGameMaterial {
     /* Will be used to store all boardgamematerials in one class */
     private Die[] dice;
-    private boolean isPlaying;
     private int gameTurn;
     private int maxGameTurns = 4;
 
@@ -18,30 +17,26 @@ public class BoardGameMaterial {
             dice[d] = new Die();
         }
 
-        while (isPlaying == true) {
-            gameTurn = 1;
-            System.out.println("Welcome to Yatzi!");
-            try (Scanner sc = new Scanner(System.in)) {
-                while (gameTurn < maxGameTurns) {
-                    startNewTurn();
-                    // YATZI
-                    if (checkIfYatzi(dice)) {
-                        System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
-                    } else {
-                        // Here we check if there is no Yatzy: then we check what turn we are on and
-                        // asks the player if we want to continue or not
-                        getUserInput(gameTurn, sc);
-                    }
+        System.out.println("Welcome to Yatzi!");
+        try (Scanner sc = new Scanner(System.in)) {
+            while (gameTurn < maxGameTurns) {
+                startNewTurn();
+                // YATZI
+                if (checkIfYatzi(dice)) {
+                    System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
+                    endGame();
+                } else {
+                    getUserInput(sc);
                 }
-
-            } catch (Exception e) {
-                System.err.println(e);
             }
+
+        } catch (Exception e) {
+            System.err.println(e);
         }
 
     }
 
-    private void getUserInput(int gameTurn, Scanner sc) {
+    private void getUserInput(Scanner sc) {
         if (gameTurn != 3) {
             rerollDies(sc);
         } else {
@@ -85,11 +80,9 @@ public class BoardGameMaterial {
 
         }
         return isYatzi;
-
     }
 
     public void endGame() {
-        this.isPlaying = false;
         System.exit(0);
     }
 
