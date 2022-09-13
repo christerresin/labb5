@@ -22,12 +22,7 @@ public class BoardGameMaterial {
             System.out.println("Welcome to Yatzi!");
             try (Scanner sc = new Scanner(System.in)) {
                 while (gameTurn < 4) {
-                    System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
-                    for (int i = 0; i < dice.length; i++) {
-                        dice[i].rollDie(6);
-                        // dice[i].value = 5; //Test if yatzi work
-                        System.out.println(i + 1 + ": " + dice[i].toString());
-                    }
+                    startGame();
                     // YATZI
                     if (checkIfYatzi(dice)) {
                         System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
@@ -57,6 +52,15 @@ public class BoardGameMaterial {
             }
         }
 
+    }
+
+    private void startGame() {
+        System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
+        for (int i = 0; i < dice.length; i++) {
+            dice[i].rollDie(6);
+            // dice[i].value = 5; //Test if yatzi work
+            System.out.println(i + 1 + ": " + dice[i].toString());
+        }
     }
 
     public boolean checkIfYatzi(Die[] dice) {
