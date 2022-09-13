@@ -19,9 +19,9 @@ public class YatziTest {
     void isNotYatziWhenOneDieIsNotMatchingTheOther() {
         Die[] dice = new Die[5];
         for (int d = 0; d < 5; d++) {
-            dice[d] = new Die();
+            dice[d] = new Die(1);
         }
-        dice[4].rollDie();
+        dice[4].rollDie(6);
         BoardGameMaterial yatzi = new BoardGameMaterial();
         assertEquals(false, yatzi.checkIfYatzi(dice));
     }

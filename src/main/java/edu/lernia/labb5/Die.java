@@ -4,7 +4,6 @@ public class Die extends BoardGameMaterial {
     private int value = 0;
 
     public Die() {
-        this.rollDie();
     }
 
     public Die(int value) {
@@ -19,8 +18,8 @@ public class Die extends BoardGameMaterial {
         this.value = value;
     }
 
-    public void rollDie() {
-        int dieValue = (int) (Math.random() * 6 + 1);
+    public void rollDie(int dieSides) {
+        int dieValue = (int) (Math.random() * dieSides + 1);
         setValue(dieValue);
     }
 

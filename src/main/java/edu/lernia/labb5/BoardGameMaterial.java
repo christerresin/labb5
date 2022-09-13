@@ -24,7 +24,7 @@ public class BoardGameMaterial {
                 while (gameTurn < 4) {
                     System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
                     for (int i = 0; i < dice.length; i++) {
-                        dice[i].rollDie();
+                        dice[i].rollDie(6);
                         // dice[i].value = 5; //Test if yatzi work
                         System.out.println(i + 1 + ": " + dice[i].toString());
                     }
