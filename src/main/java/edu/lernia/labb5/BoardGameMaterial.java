@@ -9,7 +9,6 @@ public class BoardGameMaterial {
     private int maxGameTurns = 4;
 
     public void startNewGame() {
-        isPlaying = true;
         gameTurn = 1;
 
         dice = new Die[5];
@@ -21,7 +20,6 @@ public class BoardGameMaterial {
         try (Scanner sc = new Scanner(System.in)) {
             while (gameTurn < maxGameTurns) {
                 startNewTurn();
-                // YATZI
                 if (checkIfYatzi(dice)) {
                     System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
                     endGame();
@@ -66,7 +64,6 @@ public class BoardGameMaterial {
         System.out.println("Starting turn " + (gameTurn) + " of 3, rolling dice.");
         for (int i = 0; i < dice.length; i++) {
             dice[i].rollDie(6);
-            // dice[i].value = 5; //Test if yatzi work
             System.out.println(i + 1 + ": " + dice[i].toString());
         }
     }
