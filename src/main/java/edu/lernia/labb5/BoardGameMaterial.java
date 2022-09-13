@@ -7,6 +7,7 @@ public class BoardGameMaterial {
     private Die[] dice;
     private boolean isPlaying;
     private int gameTurn;
+    private int maxGameTurns = 4;
 
     public void startNewGame() {
         isPlaying = true;
@@ -21,7 +22,7 @@ public class BoardGameMaterial {
             gameTurn = 1;
             System.out.println("Welcome to Yatzi!");
             try (Scanner sc = new Scanner(System.in)) {
-                while (gameTurn < 4) {
+                while (gameTurn < maxGameTurns) {
                     startNewTurn();
                     // YATZI
                     if (checkIfYatzi(dice)) {
@@ -29,11 +30,7 @@ public class BoardGameMaterial {
                     } else {
                         // Here we check if there is no Yatzy: then we check what turn we are on and
                         // asks the player if we want to continue or not
-                        if (gameTurn != 3) {
-                            rerollDies(sc);
-                        } else {
-                            gameOverOrNewGame(sc);
-                        }
+                        getUserInput(gameTurn, sc);
                     }
                 }
 
@@ -42,6 +39,14 @@ public class BoardGameMaterial {
             }
         }
 
+    }
+
+    private void getUserInput(int gameTurn, Scanner sc) {
+        if (gameTurn != 3) {
+            rerollDies(sc);
+        } else {
+            gameOverOrNewGame(sc);
+        }
     }
 
     private void rerollDies(Scanner sc) {
