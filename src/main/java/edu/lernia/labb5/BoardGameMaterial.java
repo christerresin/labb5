@@ -3,10 +3,9 @@ package edu.lernia.labb5;
 import java.util.Scanner;
 
 public class BoardGameMaterial {
-    /* Will be used to store all boardgamematerials in one class */
     private Die[] dice;
     private int gameTurn;
-    private int maxGameTurns = 4;
+    private int maxGameTurns = 3;
 
     public void startNewGame() {
         gameTurn = 1;
@@ -18,7 +17,7 @@ public class BoardGameMaterial {
 
         System.out.println("Welcome to Yatzi!");
         try (Scanner sc = new Scanner(System.in)) {
-            while (gameTurn < maxGameTurns) {
+            while (gameTurn <= maxGameTurns) {
                 startNewTurn();
                 if (checkIfYatzi(dice)) {
                     System.out.println("You got YATZI! in " + dice[0].getValue() + "'s");
